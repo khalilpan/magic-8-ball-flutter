@@ -8,6 +8,7 @@ void main() => runApp(
         home: Scaffold(
           appBar: AppBar(
             title: Text("8Ball"),
+            centerTitle: true,
             backgroundColor: Colors.blue[900],
           ),
           body: MyApp(),
@@ -28,13 +29,22 @@ class _MyAppState extends State<MyApp> {
         child: Row(
       children: <Widget>[
         Expanded(
-          child: FlatButton(
-            child: Image.asset('images/ball$ballNumber.png'),
-            onPressed: () {
-              setState(() {
-                ballNumber = Random().nextInt(4) + 1;
-              });
-            },
+          child: Column(
+            children: <Widget>[
+//              Text('Press the Ball to see answer'),
+              Expanded(
+                child: FlatButton(
+                  child: Image.asset('images/ball$ballNumber.png'),
+                  onPressed: () {
+                    setState(
+                      () {
+                        ballNumber = Random().nextInt(4) + 1;
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ],
